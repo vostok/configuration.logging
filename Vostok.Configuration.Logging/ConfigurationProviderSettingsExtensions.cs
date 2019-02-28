@@ -1,6 +1,5 @@
 ﻿using System;
 using JetBrains.Annotations;
-using Vostok.Configuration.Printing;
 using Vostok.Logging.Abstractions;
 
 namespace Vostok.Configuration.Logging
