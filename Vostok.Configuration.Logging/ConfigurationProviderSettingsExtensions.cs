@@ -1,5 +1,6 @@
 ﻿using System;
 using JetBrains.Annotations;
+using Vostok.Configuration.Printing;
 using Vostok.Logging.Abstractions;
 
 namespace Vostok.Configuration.Logging
@@ -33,12 +34,20 @@ namespace Vostok.Configuration.Logging
             return settings;
         }
 
+        /// <inheritdoc cref="WithSettingsLogging(ConfigurationProviderSettings,ILog,PrintSettings)"/>
+        [NotNull]
+        public static ConfigurationProviderSettings WithSettingsLogging([NotNull] this ConfigurationProviderSettings settings, [NotNull] ILog log)
+            => WithSettingsLogging(settings, log, null);
+
         /// <summary>
         /// <para>Enriches <see cref="ConfigurationProviderSettings.SettingsCallback"/> of given <paramref name="settings"/> with logging of new settings instances.</para>
         /// <para>Values are rendered with <see cref="ConfigurationPrinter"/>.</para>
         /// </summary>
         [NotNull]
-        public static ConfigurationProviderSettings WithSettingsLogging([NotNull] this ConfigurationProviderSettings settings, [NotNull] ILog log)
+        public static ConfigurationProviderSettings WithSettingsLogging(
+            [NotNull] this ConfigurationProviderSettings settings, 
+            [NotNull] ILog log,
+            [CanBeNull] PrintSettings printSettings)
         {
             if (settings == null)
                 throw new ArgumentNullException(nameof(settings));
@@ -55,7 +64,7 @@ namespace Vostok.Configuration.Logging
                 currentCallback?.Invoke(value, source);
 
                 log.Info("Initialized new settings of type '{SettingsType}' from source of type '{SourceType}': \n{SettingsObject}",
-                    value?.GetType()?.Name, source?.GetType()?.Name, ConfigurationPrinter.Print(value));
+                    value?.GetType()?.Name, source?.GetType()?.Name, ConfigurationPrinter.Print(value, printSettings));
             };
 
             return settings;
