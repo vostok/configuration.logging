@@ -45,7 +45,7 @@ namespace Vostok.Configuration.Logging
         /// </summary>
         [NotNull]
         public static ConfigurationProviderSettings WithSettingsLogging(
-            [NotNull] this ConfigurationProviderSettings settings, 
+            [NotNull] this ConfigurationProviderSettings settings,
             [NotNull] ILog log,
             [CanBeNull] PrintSettings printSettings)
         {
@@ -64,7 +64,38 @@ namespace Vostok.Configuration.Logging
                 currentCallback?.Invoke(value, source);
 
                 log.Info("Initialized new settings of type '{SettingsType}' from source of type '{SourceType}': \n{SettingsObject}",
-                    value?.GetType()?.Name, source?.GetType()?.Name, ConfigurationPrinter.Print(value, printSettings));
+                    value?.GetType()?.Name,
+                    source?.GetType()?.Name,
+                    ConfigurationPrinter.Print(value, printSettings));
+            };
+
+            return settings;
+        }
+
+        /// <summary>
+        /// <para>Enriches <see cref="ConfigurationProviderSettings.SettingsCallback"/> of given <paramref name="settings"/> with logging of new settings instances.</para>
+        /// <para>Values are not rendered.</para>
+        /// </summary>
+        [NotNull]
+        public static ConfigurationProviderSettings WithUpdatesLogging([NotNull] this ConfigurationProviderSettings settings, [NotNull] ILog log)
+        {
+            if (settings == null)
+                throw new ArgumentNullException(nameof(settings));
+
+            if (log == null)
+                throw new ArgumentNullException(nameof(log));
+
+            log = log.ForContext<ConfigurationProvider>();
+
+            var currentCallback = settings.SettingsCallback;
+
+            settings.SettingsCallback = (value, source) =>
+            {
+                currentCallback?.Invoke(value, source);
+
+                log.Info("Initialized new settings of type '{SettingsType}' from source of type '{SourceType}'.",
+                    value?.GetType()?.Name,
+                    source?.GetType()?.Name);
             };
 
             return settings;

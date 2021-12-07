@@ -1,3 +1,7 @@
+## 0.1.3 (07-12-2021):
+
+Added `WithUpdatesLogging` extension.
+
 ## 0.1.2 (06-12-2021):
 
 Added `net6.0` target.
