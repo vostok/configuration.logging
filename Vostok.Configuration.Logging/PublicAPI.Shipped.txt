@@ -1,0 +1,5 @@
+static Vostok.Configuration.Logging.ConfigurationProviderSettingsExtensions.WithErrorLogging(this Vostok.Configuration.ConfigurationProviderSettings settings, Vostok.Logging.Abstractions.ILog log) -> Vostok.Configuration.ConfigurationProviderSettings
+static Vostok.Configuration.Logging.ConfigurationProviderSettingsExtensions.WithSettingsLogging(this Vostok.Configuration.ConfigurationProviderSettings settings, Vostok.Logging.Abstractions.ILog log) -> Vostok.Configuration.ConfigurationProviderSettings
+static Vostok.Configuration.Logging.ConfigurationProviderSettingsExtensions.WithSettingsLogging(this Vostok.Configuration.ConfigurationProviderSettings settings, Vostok.Logging.Abstractions.ILog log, Vostok.Configuration.Printing.PrintSettings printSettings) -> Vostok.Configuration.ConfigurationProviderSettings
+static Vostok.Configuration.Logging.ConfigurationProviderSettingsExtensions.WithUpdatesLogging(this Vostok.Configuration.ConfigurationProviderSettings settings, Vostok.Logging.Abstractions.ILog log) -> Vostok.Configuration.ConfigurationProviderSettings
+Vostok.Configuration.Logging.ConfigurationProviderSettingsExtensions
