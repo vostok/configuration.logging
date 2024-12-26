@@ -20,17 +20,8 @@
     <RepositoryUrl>https://github.com/vostok/configuration.logging</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Vostok.Configuration.Abstractions">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.configuration.abstractions\Vostok.Configuration.Abstractions\bin\Release\$(ReferencesFramework)\Vostok.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Vostok.Configuration">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.configuration\Vostok.Configuration\bin\Release\$(ReferencesFramework)\Vostok.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Vostok.Logging.Abstractions">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\vostok.logging.abstractions\Vostok.Logging.Abstractions\bin\Release\$(ReferencesFramework)\Vostok.Logging.Abstractions.dll</HintPath>
-    </Reference>
+    <ModuleReference Include="vostok.configuration.abstractions" />
+    <ModuleReference Include="vostok.configuration" />
+    <ModuleReference Include="vostok.logging.abstractions" />
   </ItemGroup>
 </Project>
