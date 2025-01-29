@@ -9,6 +9,25 @@ notests *default:
     - Vostok.Configuration.Logging/bin/Release/netstandard2.0/Vostok.Configuration.Logging.dll
     - module vostok.configuration
     - module vostok.logging.abstractions
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Configuration.Logging/bin/Release/netstandard2.0/Vostok.Configuration.Logging.dll
+          modules:
+            - name: vostok.configuration
+            - name: vostok.logging.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Configuration.Logging/bin/Release/net6.0/Vostok.Configuration.Logging.dll
+          modules:
+            - name: vostok.configuration
+            - name: vostok.logging.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Configuration.Logging/bin/Release/net8.0/Vostok.Configuration.Logging.dll
+          modules:
+            - name: vostok.configuration
+            - name: vostok.logging.abstractions
 
   deps:
     - vostok.devtools
@@ -20,6 +39,33 @@ full-build > notests:
   deps:
     - -vostok.devtools
     - vostok.devtools@with-net6.0
+
+  install:
+    - Vostok.Configuration.Logging/bin/Release/netstandard2.0/Vostok.Configuration.Logging.dll
+    - module vostok.configuration
+    - module vostok.logging.abstractions
+    - groups:
+        - target-framework: "netstandard2.0"
+          libraries:
+            - Vostok.Configuration.Logging/bin/Release/netstandard2.0/Vostok.Configuration.Logging.dll
+          modules:
+            - name: vostok.configuration
+            - name: vostok.logging.abstractions
+        - target-framework: "net6.0"
+          libraries:
+            - Vostok.Configuration.Logging/bin/Release/net6.0/Vostok.Configuration.Logging.dll
+          modules:
+            - name: vostok.configuration
+            - name: vostok.logging.abstractions
+        - target-framework: "net8.0"
+          libraries:
+            - Vostok.Configuration.Logging/bin/Release/net8.0/Vostok.Configuration.Logging.dll
+          modules:
+            - name: vostok.configuration
+            - name: vostok.logging.abstractions
+
   build:
     target: Vostok.Configuration.Logging.sln
     configuration: Release
+    tool:
+      name: dotnet
