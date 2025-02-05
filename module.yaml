@@ -36,10 +36,6 @@ notests *default:
     - vostok.logging.abstractions
 
 full-build > notests:
-  deps:
-    - -vostok.devtools
-    - vostok.devtools@with-net6.0
-
   install:
     - Vostok.Configuration.Logging/bin/Release/netstandard2.0/Vostok.Configuration.Logging.dll
     - module vostok.configuration
